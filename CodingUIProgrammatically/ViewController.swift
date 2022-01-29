@@ -94,22 +94,28 @@ class ViewController: UIViewController {
         
         let heightImage = NSLayoutConstraint(item: image!, attribute: .height, relatedBy: .equal, toItem: image, attribute: .height, multiplier: 0, constant: 200)
         
-        //create button
-        let centerXButton = NSLayoutConstraint(item: button!, attribute: .centerX, relatedBy: .equal, toItem: view2, attribute: .centerX, multiplier: 1, constant: 0)
+        //Create button
+        button.centerXAnchor.constraint(equalTo: view2.centerXAnchor, constant: 0).isActive = true
+        button.centerYAnchor.constraint(equalTo: view2.centerYAnchor, constant: 0).isActive = true
         
-        let centerYButton = NSLayoutConstraint(item: button!, attribute: .centerY, relatedBy: .equal, toItem: view2, attribute: .centerY, multiplier: 1, constant: 0)
+        //let centerXButton = NSLayoutConstraint(item: button!, attribute: .centerX, relatedBy: .equal, toItem: view2, attribute: .centerX, multiplier: 1, constant: 0)
         
-        // width & height button
+      //  let centerYButton = NSLayoutConstraint(item: button!, attribute: .centerY, relatedBy: .equal, toItem: view2, attribute: .centerY, multiplier: 1, constant: 0)
         
-        let heightButton = NSLayoutConstraint(item: button!, attribute: .height, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 0, constant: 50)
+//MARK: Create width & height of button
         
-        let widthButton = NSLayoutConstraint(item: button!, attribute: .width, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 0, constant: 100)
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+     //   let heightButton = NSLayoutConstraint(item: button!, attribute: .height, relatedBy: .equal, toItem: button, attribute: .height, multiplier: 0, constant: 50)
+        
+    //    let widthButton = NSLayoutConstraint(item: button!, attribute: .width, relatedBy: .equal, toItem: button, attribute: .width, multiplier: 0, constant: 100)
         
         self.view.addConstraints([
             pinLeftView1,pinTopView1,pinRightView1, verticalView1,heightView1,
             centerXImage, centerYImage, widthImage, heightImage,
             pinLeftView2, pinBottomView2, pinRightView2,
-            centerXButton, centerYButton, heightButton, widthButton
+           // centerYButton, centerXButton,  heightButton, widthButton
         ])
     }
     

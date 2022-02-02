@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     var view1: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -26,11 +26,8 @@ class ViewController: UIViewController {
     var image: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        
-        // additional options
         image.image = UIImage(named: "favicon")
         image.contentMode = .scaleAspectFill
-        
         image.frame.size.height = 200
         image.frame.size.width = 200
         image.layer.cornerRadius = image.frame.size.width / 2
@@ -50,25 +47,25 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-            initViews()
-            createConstraints()
-            goToNextVC()
+        
+        initViews()
+        createConstraints()
+        goToNextVC()
     }
-
+    
     
     func initViews(){
-
+        
         //add to super view
         self.view.addSubview(view1)
         self.view.addSubview(view2)
         self.view.addSubview(image)
         self.view.addSubview(button)
-
+        
     }
     
     func createConstraints(){
-    
+        
         NSLayoutConstraint.activate([
             // create view 1
             view1.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -98,7 +95,6 @@ class ViewController: UIViewController {
             //Create width & height of button
             button.heightAnchor.constraint(equalToConstant: 50),
             button.widthAnchor.constraint(equalToConstant: 100)
-            
         ])
     }
     

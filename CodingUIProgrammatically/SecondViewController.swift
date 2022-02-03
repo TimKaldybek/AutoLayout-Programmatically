@@ -56,7 +56,7 @@ class SecondViewController: UIViewController{
         layout.scrollDirection = .horizontal
         let swipingController = CollectionViewController(collectionViewLayout: layout)
         
-        let thirdVC = ThirdViewController()
+//    let thirdVC = ThirdViewController()
         navigationController?.pushViewController(swipingController, animated: true)
         navigationController?.navigationBar.tintColor = .black
     }

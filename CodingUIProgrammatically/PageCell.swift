@@ -9,6 +9,22 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
+    var page: Page? {
+        didSet {
+            guard let unwrappedPage = page else { return }
+
+            bearImage.image = UIImage(named: unwrappedPage.imageName)
+
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18)])
+
+            attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+
+            descriptionTextView.attributedText = attributedText
+            descriptionTextView.textAlignment = .center
+            
+        }
+    }
+    
     private let bearImage : UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "bear_first"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,41 +43,12 @@ class PageCell: UICollectionViewCell {
         textView.isScrollEnabled = false
         return textView
     }()
-    
-    
-    private let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("PREV", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.gray, for: .normal)
-        return button
-    }()
-    
-    private let pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.currentPage = 0
-        pc.numberOfPages = 4
-        pc.currentPageIndicatorTintColor = .mainPink
-        pc.pageIndicatorTintColor = .gray
-        return pc
-    }()
-    
-    private let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("NEXT", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.setTitleColor(.mainPink, for: .normal)
-        return button
-    }()
-    
-    
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
-        setupBottomView()
+//        setupBottomView()
     }
     
     required init?(coder: NSCoder) {
@@ -97,23 +84,6 @@ class PageCell: UICollectionViewCell {
             descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
-        ])
-    }
-    
-    fileprivate func setupBottomView(){
-        
-        let bottomControlsView = UIStackView(arrangedSubviews: [backButton, pageControl, nextButton])
-        bottomControlsView.translatesAutoresizingMaskIntoConstraints = false
-        bottomControlsView.distribution = .fillEqually
-        
-        addSubview(bottomControlsView)
-        
-        NSLayoutConstraint.activate([
-            bottomControlsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -50),
-            bottomControlsView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            bottomControlsView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            bottomControlsView.heightAnchor.constraint(equalToConstant: 50)
-            
         ])
     }
 }

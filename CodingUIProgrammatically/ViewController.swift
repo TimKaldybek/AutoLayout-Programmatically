@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     var view2: UIView  = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .brown
+        view.backgroundColor = .systemBrown
         return view
     }()
     

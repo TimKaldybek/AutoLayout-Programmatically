@@ -41,16 +41,26 @@ class ViewController: UIViewController {
         button.setTitle("GO", for: .normal)
         button.setTitleColor(.orange, for: .normal)
         button.backgroundColor = .darkGray
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
     
+    var secondButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("TableView", for: .normal)
+        button.setTitleColor(.orange, for: .normal)
+        button.backgroundColor = .darkGray
+        button.addTarget(self, action: #selector(secondButtonAction), for: .touchUpInside)
+
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initViews()
         createConstraints()
-        goToNextVC()
     }
     
     
@@ -61,6 +71,7 @@ class ViewController: UIViewController {
         self.view.addSubview(view2)
         self.view.addSubview(image)
         self.view.addSubview(button)
+        self.view.addSubview(secondButton)
         
     }
     
@@ -88,21 +99,29 @@ class ViewController: UIViewController {
             image.widthAnchor.constraint(equalToConstant: 200),
             image.heightAnchor.constraint(equalToConstant: 200),
             
-            // create button
+            // create buttons
             button.centerXAnchor.constraint(equalTo: view2.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view2.centerYAnchor),
+            button.centerYAnchor.constraint(equalTo: view2.centerYAnchor, constant: -50),
+            secondButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
+            secondButton.centerXAnchor.constraint(equalTo: view2.centerXAnchor),
+
             
-            //Create width & height of button
+            //Create width & height of buttons
             button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: 100)
+            button.widthAnchor.constraint(equalToConstant: 100),
+            secondButton.heightAnchor.constraint(equalToConstant: 50),
+            secondButton.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
-    
-    func goToNextVC(){
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+
+    @objc func buttonAction(sender: UIButton!){
+        let secondVC = SecondViewController()
+        let navVC = UINavigationController(rootViewController: secondVC)
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
     
-    @objc func buttonAction(sender: UIButton!){
+    @objc func secondButtonAction(sender: UIButton!){
         let secondVC = SecondViewController()
         let navVC = UINavigationController(rootViewController: secondVC)
         navVC.modalPresentationStyle = .fullScreen

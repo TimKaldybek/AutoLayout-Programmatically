@@ -19,6 +19,13 @@ class SecondViewController: UIViewController{
         return btn
     }()
     
+    fileprivate let corgiImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.loadGif(name: "corgi")
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +54,10 @@ class SecondViewController: UIViewController{
     // Work with button
     private func createButton(){
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        self.view.addSubview(button)
+        
+        [button,corgiImage].forEach {
+            self.view.addSubview($0)
+        }
     }
     
     @objc private func didTapButton(){
@@ -67,7 +77,12 @@ class SecondViewController: UIViewController{
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             button.heightAnchor.constraint(equalToConstant: 50),
-            button.widthAnchor.constraint(equalToConstant: 300)
+            button.widthAnchor.constraint(equalToConstant: 300),
+            
+            corgiImage.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 20),
+            corgiImage.widthAnchor.constraint(equalToConstant: 300),
+            corgiImage.heightAnchor.constraint(equalToConstant: 300),
+            corgiImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }

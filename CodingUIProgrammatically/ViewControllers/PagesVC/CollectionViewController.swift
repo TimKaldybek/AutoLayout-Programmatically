@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "cellId"
+public let reuseIdentifier = "cellId"
 
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -22,11 +22,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
         collectionView?.register(PageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.isPagingEnabled = true
-
         setupBottomView()
     }
-    
-    
     
     private let backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -39,7 +36,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return button
     }()
     
-    private lazy var pageControl: UIPageControl = {
+     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
         pc.numberOfPages = pages.count
@@ -89,41 +86,5 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             bottomControlsView.heightAnchor.constraint(equalToConstant: 50)
             
         ])
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        let x = targetContentOffset.pointee.x
-        
-        pageControl.currentPage = Int(x / view.frame.width)
-        
-    }
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PageCell
-    
-        let page = pages[indexPath.item]
-        cell.page = page
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = view.safeAreaLayoutGuide.layoutFrame.height - (navigationController?.navigationBar.frame.size.height)!
-        return CGSize(width: view.safeAreaLayoutGuide.layoutFrame.width, height: height)
     }
 }

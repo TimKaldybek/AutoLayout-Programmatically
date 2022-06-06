@@ -1,0 +1,6 @@
+framework module Pods_CodingUIProgrammatically {
+  umbrella header "Pods-CodingUIProgrammatically-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -122,8 +122,8 @@ class ViewController: UIViewController {
     }
     
     @objc func secondButtonAction(sender: UIButton!){
-        let secondVC = SecondViewController()
-        let navVC = UINavigationController(rootViewController: secondVC)
+        let photosVC = PhotosViewController()
+        let navVC = UINavigationController(rootViewController: photosVC)
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true)
     }

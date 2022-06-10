@@ -22,7 +22,10 @@
 		9877B2C527AAACA400591AA4 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877B2C427AAACA400591AA4 /* PageCell.swift */; };
 		98DA259627A1C18400D93388 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA259527A1C18400D93388 /* SecondViewController.swift */; };
 		98DA259827A1C33E00D93388 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA259727A1C33E00D93388 /* ThirdViewController.swift */; };
+		98EF8F3C284F762000C08AF3 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EF8F3B284F762000C08AF3 /* PhotosCell.swift */; };
+		98EF8F3F284F774800C08AF3 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EF8F3E284F774800C08AF3 /* Photos.swift */; };
 		98F98A9C284E1E7A002E0F64 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F98A9B284E1E7A002E0F64 /* PhotosViewController.swift */; };
+		98F98AA6284E24B9002E0F64 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F98AA5284E24B9002E0F64 /* AlbumCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +47,10 @@
 		9877B2C427AAACA400591AA4 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		98DA259527A1C18400D93388 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		98DA259727A1C33E00D93388 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		98EF8F3B284F762000C08AF3 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
+		98EF8F3E284F774800C08AF3 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		98F98A9B284E1E7A002E0F64 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		98F98AA5284E24B9002E0F64 /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		DB08852E8ABCC5AAD8BA340B /* Pods_CodingUIProgrammatically.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodingUIProgrammatically.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,14 @@
 			path = "UIImageView + GIF";
 			sourceTree = "<group>";
 		};
+		98EF8F3D284F773C00C08AF3 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				98EF8F3E284F774800C08AF3 /* Photos.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		98F98A9D284E1E83002E0F64 /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				98F98A9B284E1E7A002E0F64 /* PhotosViewController.swift */,
+				98F98AA5284E24B9002E0F64 /* AlbumCell.swift */,
+				98EF8F3B284F762000C08AF3 /* PhotosCell.swift */,
 			);
 			path = CollectionVC;
 			sourceTree = "<group>";
@@ -154,18 +170,19 @@
 			path = ThirdVC;
 			sourceTree = "<group>";
 		};
-		98F98AA2284E1ECE002E0F64 /* PageModel */ = {
+		98F98AA2284E1ECE002E0F64 /* Page */ = {
 			isa = PBXGroup;
 			children = (
 				986C39A027ABC687008B43FB /* Page.swift */,
 			);
-			path = PageModel;
+			path = Page;
 			sourceTree = "<group>";
 		};
 		98F98AA3284E1EE5002E0F64 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				98F98AA2284E1ECE002E0F64 /* PageModel */,
+				98EF8F3D284F773C00C08AF3 /* Photo */,
+				98F98AA2284E1ECE002E0F64 /* Page */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,7 +323,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9877B2C327AA847A00591AA4 /* CollectionViewController.swift in Sources */,
+				98F98AA6284E24B9002E0F64 /* AlbumCell.swift in Sources */,
 				98600D9E2849C6DA00644B5F /* UIImage+ Gif.swift in Sources */,
+				98EF8F3F284F774800C08AF3 /* Photos.swift in Sources */,
 				98DA259627A1C18400D93388 /* SecondViewController.swift in Sources */,
 				986C39A127ABC687008B43FB /* Page.swift in Sources */,
 				983EBECC27A070250098F73D /* ViewController.swift in Sources */,
@@ -314,6 +333,7 @@
 				98DA259827A1C33E00D93388 /* ThirdViewController.swift in Sources */,
 				98685F9F27ACDAC2007D056A /* CollectionView + extension.swift in Sources */,
 				983EBEC827A070250098F73D /* AppDelegate.swift in Sources */,
+				98EF8F3C284F762000C08AF3 /* PhotosCell.swift in Sources */,
 				98F98A9C284E1E7A002E0F64 /* PhotosViewController.swift in Sources */,
 				98685F9D27ACD8AD007D056A /* SwipingControl + CollectionView.swift in Sources */,
 				983EBECA27A070250098F73D /* SceneDelegate.swift in Sources */,

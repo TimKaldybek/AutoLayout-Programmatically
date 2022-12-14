@@ -10,8 +10,12 @@ import SnapKit
 
 class PhotosViewController: UIViewController {
     
-    let cellId = "Cell"
-
+    private let collectionView: UICollectionView = {
+        let viewLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.overrideUserInterfaceStyle = .dark
@@ -21,12 +25,6 @@ class PhotosViewController: UIViewController {
         configUI()
         collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: PhotosCell.identifier)
     }
-    
-    fileprivate var collectionView: UICollectionView = {
-        let viewLayout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewLayout)
-        return collectionView
-    }()
     
     // Work with navigation bar button item
     private func createNavigationButtons(){

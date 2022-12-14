@@ -8,7 +8,7 @@
 import UIKit
 
 
-class SecondViewController: UIViewController{
+class SecondViewController: UIViewController {
     
     private let button: UIButton = {
         let btn = UIButton()

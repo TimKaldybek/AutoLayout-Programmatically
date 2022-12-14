@@ -28,8 +28,10 @@ import SnapKit
      fileprivate var collectionView : UICollectionView = {
          let layout = UICollectionViewFlowLayout()
          layout.scrollDirection = .horizontal
-         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-         return cv
+         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+         layout.itemSize = CGSize(width: 100, height: 100)
+         let vc = UICollectionView(frame: .zero, collectionViewLayout: layout)
+         return vc
      }()
      
      override init(frame: CGRect) {

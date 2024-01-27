@@ -9,21 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var view1: UIView = {
+    private var view1: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .gray
         return view
     }()
     
-    var view2: UIView  = {
+    private var view2: UIView  = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemBrown
         return view
     }()
     
-    var image: UIImageView = {
+    private var image: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.image = UIImage(named: "favicon")
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         return image
     }()
     
-    var button: UIButton = {
+    private var button: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("GO", for: .normal)
@@ -45,13 +45,24 @@ class ViewController: UIViewController {
         return button
     }()
     
-    var secondButton: UIButton = {
+    private var secondButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("CollectionView", for: .normal)
+        button.setTitleColor(.orange, for: .normal)
+        button.backgroundColor = .darkGray
+        button.addTarget(self, action: #selector(secondButtonAction), for: .touchUpInside)
+
+        return button
+    }()
+
+    private var thirdButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("TableView", for: .normal)
         button.setTitleColor(.orange, for: .normal)
         button.backgroundColor = .darkGray
-        button.addTarget(self, action: #selector(secondButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(thirdButtonAction), for: .touchUpInside)
 
         return button
     }()
@@ -65,14 +76,12 @@ class ViewController: UIViewController {
     
     
     func initViews(){
-        
-        //add to super view
         self.view.addSubview(view1)
         self.view.addSubview(view2)
         self.view.addSubview(image)
         self.view.addSubview(button)
         self.view.addSubview(secondButton)
-        
+        self.view.addSubview(thirdButton)
     }
     
     func createConstraints(){
@@ -104,13 +113,17 @@ class ViewController: UIViewController {
             button.centerYAnchor.constraint(equalTo: view2.centerYAnchor, constant: -50),
             secondButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 16),
             secondButton.centerXAnchor.constraint(equalTo: view2.centerXAnchor),
+            thirdButton.topAnchor.constraint(equalTo: secondButton.bottomAnchor, constant: 16),
+            thirdButton.centerXAnchor.constraint(equalTo: view2.centerXAnchor),
 
             
             //Create width & height of buttons
             button.heightAnchor.constraint(equalToConstant: 50),
             button.widthAnchor.constraint(equalToConstant: 100),
             secondButton.heightAnchor.constraint(equalToConstant: 50),
-            secondButton.widthAnchor.constraint(equalToConstant: 100)
+            secondButton.widthAnchor.constraint(equalToConstant: 140),
+            thirdButton.heightAnchor.constraint(equalToConstant: 50),
+            thirdButton.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
 
@@ -124,6 +137,13 @@ class ViewController: UIViewController {
     @objc func secondButtonAction(sender: UIButton!){
         let photosVC = PhotosViewController()
         let navVC = UINavigationController(rootViewController: photosVC)
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
+    }
+    
+    @objc func thirdButtonAction(sender: UIButton!){
+        let tableVC = MainTableViewController()
+        let navVC = UINavigationController(rootViewController: tableVC)
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true)
     }

@@ -16,7 +16,7 @@ import SnapKit
      static var identifier = "Test"
      static var shared = PhotosCell()
 
-     fileprivate var titleLabel: UILabel = {
+     private let titleLabel: UILabel = {
              let lb  = UILabel()
              lb.text = "Section Title"
              lb.font = UIFont.boldSystemFont(ofSize: 24)
@@ -25,7 +25,7 @@ import SnapKit
              return lb
          }()
      
-     fileprivate var collectionView : UICollectionView = {
+     private let collectionView : UICollectionView = {
          let layout = UICollectionViewFlowLayout()
          layout.scrollDirection = .horizontal
          layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
@@ -52,14 +52,14 @@ import SnapKit
          fatalError("init(coder:) has not been implemented")
      }
      
-     fileprivate func setupCell(){
+     private func setupCell(){
          addSubview(titleLabel)
          addSubview(collectionView)
          collectionView.dataSource = self
          collectionView.delegate = self
      }
      
-     fileprivate func configUI(){
+     private func configUI(){
          titleLabel.snp.makeConstraints { (m) in
              m.top.equalToSuperview().offset(8)
              m.left.equalToSuperview().offset(8)

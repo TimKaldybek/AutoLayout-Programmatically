@@ -59,10 +59,6 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout, UICollection
 // MARK: - ConfigUI
 
 extension PhotosViewController {
-
-    func registerItems(){
-        
-    }
     
         func configUI() {
             view.addSubview(collectionView)

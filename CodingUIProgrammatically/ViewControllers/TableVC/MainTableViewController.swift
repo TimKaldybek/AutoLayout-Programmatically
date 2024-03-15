@@ -11,6 +11,7 @@ import SnapKit
 
 class MainTableViewController: UIViewController {    
     private let previewView = PreviewView()
+    private let fixLeadingSpacingView = FixLeadingSpacingView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

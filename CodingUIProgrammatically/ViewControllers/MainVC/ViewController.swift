@@ -67,6 +67,16 @@ class ViewController: UIViewController {
         return button
     }()
     
+    private var previewShortsButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Shorts", for: .normal)
+        button.setTitleColor(.orange, for: .normal)
+        button.backgroundColor = .darkGray
+        button.addTarget(self, action: #selector(previewButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,6 +92,7 @@ class ViewController: UIViewController {
         self.view.addSubview(button)
         self.view.addSubview(secondButton)
         self.view.addSubview(thirdButton)
+        view.addSubview(previewShortsButton)
     }
     
     func createConstraints(){
@@ -108,6 +119,9 @@ class ViewController: UIViewController {
             image.widthAnchor.constraint(equalToConstant: 200),
             image.heightAnchor.constraint(equalToConstant: 200),
             
+            previewShortsButton.centerXAnchor.constraint(equalTo: view1.centerXAnchor),
+            previewShortsButton.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 16),
+            
             // create buttons
             button.centerXAnchor.constraint(equalTo: view2.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: view2.centerYAnchor, constant: -50),
@@ -123,7 +137,9 @@ class ViewController: UIViewController {
             secondButton.heightAnchor.constraint(equalToConstant: 50),
             secondButton.widthAnchor.constraint(equalToConstant: 140),
             thirdButton.heightAnchor.constraint(equalToConstant: 50),
-            thirdButton.widthAnchor.constraint(equalToConstant: 100)
+            thirdButton.widthAnchor.constraint(equalToConstant: 100),
+            previewShortsButton.heightAnchor.constraint(equalToConstant: 50),
+            previewShortsButton.widthAnchor.constraint(equalToConstant: 140)
         ])
     }
 
@@ -144,6 +160,13 @@ class ViewController: UIViewController {
     @objc func thirdButtonAction(sender: UIButton!){
         let tableVC = MainTableViewController()
         let navVC = UINavigationController(rootViewController: tableVC)
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
+    }
+    
+    @objc func previewButtonAction(sender: UIButton!) {
+        let shortsVC = PreviewShortsVC()
+        let navVC = UINavigationController(rootViewController: shortsVC)
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true)
     }
